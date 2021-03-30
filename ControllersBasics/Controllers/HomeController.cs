@@ -22,11 +22,11 @@ namespace ControllersBasics.Controllers
         [HttpPost]
         // title si author el le ia din forma, acolo sunt 2 casete cu aceste name, cand apasam submit, sistema leaga
         // datele
-        public string GetBook(string title, string author)
+        public ActionResult PostBook()
         {
-            Console.WriteLine(title);
-            Console.WriteLine(author);
-            return title + ", de " + author + ", buna alegere!";
+            ViewBag.booktitle = Request.Params["title"];
+            ViewBag.author = Request.Params["author"];
+            return View();
         }
 
         public string Square()
