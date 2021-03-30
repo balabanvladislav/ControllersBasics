@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ControllersBasics.Util;
 
 namespace ControllersBasics.Controllers
 {
@@ -13,6 +14,16 @@ namespace ControllersBasics.Controllers
             return id.ToString();
         }
 
+        public ActionResult GetHtml()
+        {
+            return new HttpNotFoundResult("Opsie (:");
+        }
+
+        public ActionResult GetImage()
+        {
+            string path = "../Content/Images/avatar.jpg";
+            return new ImageResult(path);
+        }
         [HttpGet]
         public ActionResult GetBook()
         {
