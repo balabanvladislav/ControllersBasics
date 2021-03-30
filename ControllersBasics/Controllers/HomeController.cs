@@ -13,8 +13,27 @@ namespace ControllersBasics.Controllers
             return id.ToString();
         }
 
-        public string Square(int a, int h)
+        [HttpGet]
+        public ActionResult GetBook()
         {
+            return View();
+        }
+
+        [HttpPost]
+        // title si author el le ia din forma, acolo sunt 2 casete cu aceste name, cand apasam submit, sistema leaga
+        // datele
+        public string GetBook(string title, string author)
+        {
+            Console.WriteLine(title);
+            Console.WriteLine(author);
+            return title + ", de " + author + ", buna alegere!";
+        }
+
+        public string Square()
+        {
+            int a = Int32.Parse(Request.Params["a"]);
+
+            int h = Int32.Parse(Request.Params["h"]);
             double s = a * h / 2;
             return "<h2> Perimetrul triunghiului cu baza " + a + " si inaltimea " +
                    h + " este " + s + " </h2>";
