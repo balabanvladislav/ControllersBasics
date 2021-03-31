@@ -9,14 +9,27 @@ namespace ControllersBasics.Controllers
 {
     public class HomeController : Controller
     {
+        public string GetContext()
+        {
+            string browser = HttpContext.Request.Browser.Browser;
+            string user_agent = HttpContext.Request.UserAgent;
+            string url = HttpContext.Request.RawUrl;
+            string ip = HttpContext.Request.UserHostAddress;
+            string referrer = HttpContext.Request.UrlReferrer == null
+                ? "" 
+                : HttpContext.Request.UrlReferrer.AbsoluteUri;
+            return "<p>Browser: " + browser+"</p><p>User-Agent: "+user_agent+"</p><p>Url запроса: "+url+
+                   "</p><p>Реферер: " + referrer + "</p><p>IP-адрес: "+ip+"</p>";
+        }
+
         public string GetId(int id)
         {
             return id.ToString();
         }
 
         public ActionResult NotFound()
-        
-        
+
+
         {
             return new HttpNotFoundResult("Opsie (:");
         }
@@ -26,6 +39,7 @@ namespace ControllersBasics.Controllers
             string path = "../Content/Images/avatar.jpg";
             return new ImageResult(path);
         }
+
         [HttpGet]
         public ActionResult GetBook()
         {
@@ -44,7 +58,18 @@ namespace ControllersBasics.Controllers
 
         public ActionResult Index()
         {
-            return Redirect("~/Home/About/");
+            return View();
+        }
+
+        public FileResult GetFile()
+        {
+            // drumul catre file
+            string file_path = Server.MapPath("~/Files/MyCV.pdf");
+            // tipul failului
+            string file_type = "application/pdf";
+            // numele fileului ( nu e necesar)
+            string file_name = "MyCV.pdf";
+            return File(file_path, file_type, file_name);
         }
 
         public ActionResult About()

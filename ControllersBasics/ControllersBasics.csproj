@@ -134,6 +134,7 @@
         <Content Include="Content\bootstrap.min.css" />
         <Content Include="Content\Images\avatar.jpg" />
         <Content Include="favicon.ico" />
+        <Content Include="Files\MyCV.pdf" />
         <Content Include="fonts\glyphicons-halflings-regular.svg" />
         <Content Include="Global.asax" />
         <Content Include="Content\Site.css" />
