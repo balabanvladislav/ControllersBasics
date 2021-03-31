@@ -14,7 +14,7 @@ namespace ControllersBasics.Controllers
             return id.ToString();
         }
 
-        public ActionResult GetHtml()
+        public ActionResult NotFound()
         
         
         {
@@ -42,19 +42,9 @@ namespace ControllersBasics.Controllers
             return View();
         }
 
-        public string Square()
-        {
-            int a = Int32.Parse(Request.Params["a"]);
-
-            int h = Int32.Parse(Request.Params["h"]);
-            double s = a * h / 2;
-            return "<h2> Perimetrul triunghiului cu baza " + a + " si inaltimea " +
-                   h + " este " + s + " </h2>";
-        }
-
         public ActionResult Index()
         {
-            return View();
+            return Redirect("~/Home/About/");
         }
 
         public ActionResult About()
